@@ -1,6 +1,6 @@
 # Recolor Palette
 
-Plugins Paint.NET pour recoloriser une texture en transférant la palette d'une image source vers une image cible — le même algorithme que le script Python `recolor.py`.
+Plugins Paint.NET pour recoloriser une texture en transférant la palette d'une image source vers une image cible.
 
 ## Fonctionnement
 
@@ -64,19 +64,9 @@ Les DLL sont générées dans le dossier Effects de Paint.NET.
 |---------|-------------|
 | `RecolorTakePalette.cs` | Source CodeLab — enregistre la palette |
 | `RecolorApplyPalette.cs` | Source CodeLab — applique la palette |
-| `recolor.py` | Script Python d'origine (ligne de commande) |
 | `Install_All.bat` | Installe les deux plugins d'un coup |
 | `Install_RecolorTakePalette.bat` | Installe uniquement « Prendre la palette » |
 | `Install_RecolorApplyPalette.bat` | Installe uniquement « Appliquer la palette » |
-
-## Script Python (alternative)
-
-```bash
-pip install -r requirements.txt
-python recolor.py palette.png base.png resultat.png
-```
-
-Arguments : `palette` (source de couleurs), `base` (image à recoloriser), `resultat` (fichier de sortie).
 
 ## Algorithme
 
