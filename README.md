@@ -1,40 +1,40 @@
 # Recolor Palette
 
-Plugins Paint.NET pour recoloriser une texture en transférant la palette d'une image source vers une image cible.
+Paint.NET plugins to recolor a texture by transferring the palette from a source image to a target image.
 
-## Fonctionnement
+## How it works
 
-1. Ouvrir l'image **palette** → **Effets → Recolor → Prendre la palette**
-2. Ouvrir l'image **base** → **Effets → Recolor → Appliquer la palette**
-3. Le résultat s'ouvre dans un **nouvel onglet** Paint.NET (l'image base reste inchangée)
+1. Open the **palette** image → **Effects → Recolor → Take palette**
+2. Open the **base** image → **Effects → Recolor → Apply palette**
+3. The result opens in a **new Paint.NET tab** (the base image stays unchanged)
 
-La palette est mémorisée entre les deux étapes dans :
+The palette is stored between the two steps at:
 
 `%LocalAppData%\RecolorPalette\palette.bin`
 
-## Prérequis
+## Requirements
 
-- [Paint.NET](https://www.getpaint.net/) **5.2 ou plus récent**
+- [Paint.NET](https://www.getpaint.net/) **5.2 or newer**
 - Windows
 
-Pour compiler les plugins vous-même :
+To build the plugins yourself:
 
-- [CodeLab](https://boltbait.com/pdn/codelab/) installé dans Paint.NET
+- [CodeLab](https://boltbait.com/pdn/codelab/) installed in Paint.NET
 
 ## Installation
 
-### Option A — Release (recommandé)
+### Option A - Release (recommended)
 
-1. Télécharger la dernière [Release](https://github.com/ClementDaguenet/RecolorPalette/releases)
-2. Extraire les fichiers
-3. Lancer **`Install_All.bat`** (clic droit → Exécuter en tant qu'administrateur si besoin)
-4. Redémarrer Paint.NET
+1. Download the latest [Release](https://github.com/ClementDaguenet/RecolorPalette/releases)
+2. Extract the files
+3. Run **`Install_All.bat`** (right-click → Run as administrator if needed)
+4. Restart Paint.NET
 
-Les effets apparaissent dans **Effets → Recolor**.
+The effects appear under **Effects → Recolor**.
 
-### Option B — Installation manuelle
+### Option B - Manual installation
 
-Copier les deux DLL dans le dossier Effects de Paint.NET :
+Copy both DLLs into the Paint.NET Effects folder:
 
 ```
 C:\Program Files\paint.net\Effects\
@@ -42,41 +42,41 @@ C:\Program Files\paint.net\Effects\
 └── RecolorApplyPalette.dll
 ```
 
-Version Microsoft Store : copier plutôt dans :
+Microsoft Store version: copy to:
 
 ```
 Documents\paint.net App Files\Effects\
 ```
 
-### Option C — Compiler depuis les sources
+### Option C - Build from source
 
-1. Ouvrir Paint.NET → **Effets → Advanced → CodeLab**
-2. **File → Open** → ouvrir `RecolorTakePalette.cs`
+1. Open Paint.NET → **Effects → Advanced → CodeLab**
+2. **File → Open** → open `RecolorTakePalette.cs`
 3. **File → Build DLL** (Ctrl+B)
-4. Répéter pour `RecolorApplyPalette.cs`
-5. Redémarrer Paint.NET
+4. Repeat for `RecolorApplyPalette.cs`
+5. Restart Paint.NET
 
-Les DLL sont générées dans le dossier Effects de Paint.NET.
+The DLLs are generated in Paint.NET’s Effects folder.
 
-## Fichiers du dépôt
+## Repository files
 
-| Fichier | Description |
-|---------|-------------|
-| `RecolorTakePalette.cs` | Source CodeLab — enregistre la palette |
-| `RecolorApplyPalette.cs` | Source CodeLab — applique la palette |
-| `Install_All.bat` | Installe les deux plugins d'un coup |
-| `Install_RecolorTakePalette.bat` | Installe uniquement « Prendre la palette » |
-| `Install_RecolorApplyPalette.bat` | Installe uniquement « Appliquer la palette » |
+| File | Description |
+|------|-------------|
+| `RecolorTakePalette.cs` | CodeLab source - saves the palette |
+| `RecolorApplyPalette.cs` | CodeLab source - applies the palette |
+| `Install_All.bat` | Installs both plugins at once |
+| `Install_RecolorTakePalette.bat` | Installs **Take palette** only |
+| `Install_RecolorApplyPalette.bat` | Installs **Apply palette** only |
 
-## Algorithme
+## Algorithm
 
-- Extraction des couleurs uniques non transparentes, triées par luminosité
-- Correspondance palette → palette par index proportionnel
-- Remplacement de chaque pixel par la couleur la plus proche dans la palette de base
+- Extract unique non-transparent colors, sorted by brightness
+- Map palette to palette by proportional index
+- Replace each pixel with the nearest color in the base palette
 
-## Publier une release sur GitHub
+## Publishing a GitHub release
 
-Après avoir compilé les DLL avec CodeLab, copiez-les à la racine du dépôt puis :
+After building the DLLs with CodeLab, copy them to the repository root, then:
 
 ```bash
 git add RecolorTakePalette.dll RecolorApplyPalette.dll
@@ -85,12 +85,12 @@ git tag v1.0
 git push origin main --tags
 ```
 
-Sur GitHub : **Releases → Draft a new release** → choisir le tag `v1.0` → joindre les DLL et les scripts `.bat`.
+On GitHub: **Releases → Draft a new release** → select tag `v1.0` → attach the DLLs and `.bat` scripts.
 
-## Licence
+## License
 
-MIT — voir [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
-## Auteur
+## Author
 
 WoXayZ / [ClementDaguenet](https://github.com/ClementDaguenet)
